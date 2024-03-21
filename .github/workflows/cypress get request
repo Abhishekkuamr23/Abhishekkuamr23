@@ -1,0 +1,17 @@
+///<reference types ="Cypress" />
+
+describe('get api user tests', ()=>{
+
+    it('get users', ()=>{
+      cy.request({
+        method : 'GET',
+        url : 'https://gorest.co.in/public/v2/users',
+        headers : {
+            'authorization' : "Bearer 7860cdbb9683b4e00f4109e6e653963681902d90fb3d5176bdc3bf90d770dea9"
+        }
+      }).then((res)=>{
+        expect(res.status).to.eq(200)
+        expect(res.body.meta.limit).to.eq(20)
+      })
+    })
+})
